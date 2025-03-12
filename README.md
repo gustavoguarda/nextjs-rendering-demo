@@ -1,36 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Next.js Rendering Strategies - SSG, SSR & ISR
 
-## Getting Started
+This project demonstrates the three main **rendering strategies** available in Next.js:
 
-First, run the development server:
+1. **SSR (Server-Side Rendering)**
+2. **SSG (Static Site Generation)**
+3. **ISR (Incremental Static Regeneration)**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Each page displays:
+
+- A **static timestamp** (when the page was generated).
+- A **real-time updating timestamp** (to demonstrate client-side updates).
+
+---
+
+## 📌 **Project Setup**
+
+To get started, clone this repository and install dependencies:
+
+```sh
+git clone <repo-url>
+cd nextjs-rendering-demo
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 **Running the Project**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🔧 **Development Mode** (Behaves like SSR for testing)
 
-## Learn More
+```sh
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+- Open `http://localhost:3000/ssg`, `http://localhost:3000/ssr`, or `http://localhost:3000/isr` to see each rendering type.
+- In dev mode, **SSG and ISR behave like SSR** (pages regenerate on each request).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 🔥 **Production Mode (Correct ISR & SSG Behavior)**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```sh
+npm run build
+npm start
+```
 
-## Deploy on Vercel
+- Open `http://localhost:3000/isr` and refresh the page.
+- The **timestamp will remain static** for **60 seconds** before regenerating.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 **Pages & Their Rendering Strategies**
+
+### 🟢 **1. Static Site Generation (SSG)**
+
+📂 **`/ssg`**
+
+- The page is **generated at build time** and does **not change until the next deployment**.
+- **Fastest performance** because it's pure static HTML.
+- **Example Use Cases**: Blogs, documentation, product pages.
+
+```jsx
+export const revalidate = false; // Fully static
+```
+
+### 🔵 **2. Server-Side Rendering (SSR)**
+
+📂 **`/ssr`**
+
+- The page is **re-generated on every request**.
+- Ensures fresh content but has **higher server load**.
+- **Example Use Cases**: Real-time dashboards, personalized content.
+
+```jsx
+export const dynamic = "force-dynamic"; // Forces SSR
+```
+
+### 🟠 **3. Incremental Static Regeneration (ISR)**
+
+📂 **`/isr`**
+
+- The page is **generated at build time**, but **can be updated periodically** without a full rebuild.
+- **Best of both worlds:** Static speed + periodic updates.
+- **Example Use Cases**: E-commerce product pages, pricing tables, blogs with frequent updates.
+
+```jsx
+export const revalidate = 60; // Regenerates every 60 seconds
+```
+
+---
+
+## 📌 **How to Test Rendering Differences**
+
+| Feature         | **SSG**             | **SSR**         | **ISR**                               |
+| --------------- | ------------------- | --------------- | ------------------------------------- |
+| **Generation**  | Build time          | Every request   | Build time + updates                  |
+| **Performance** | ⚡ Fastest          | 🏎️ Slower       | ⚡ Fast, updates periodically         |
+| **Fresh Data**  | ❌ Only on redeploy | ✅ Always fresh | ✅ Updated every `revalidate` seconds |
+
+---
+
+## 🎯 **Demo Features**
+
+Each page displays:
+
+- **🛠️ A static timestamp** → Shows when the page was generated.
+- **⏰ A real-time timestamp** → Shows client-side updates.
+
+---
+
+## 🔗 **Useful Next.js Links**
+
+- [Next.js Official Documentation](https://nextjs.org/docs)
+- [Data Fetching in Next.js](https://nextjs.org/docs/app/building-your-application/data-fetching)
+
+---
+
+## 🤝 **Contributing**
+
+If you find any issues or have improvements, feel free to open a pull request. 🚀
+
+---
+
+## 📜 **License**
+
+This project is licensed under the MIT License.
