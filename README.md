@@ -11,6 +11,12 @@ Each page displays:
 - A **static timestamp** (when the page was generated).
 - A **real-time updating timestamp** (to demonstrate client-side updates).
 
+## 🎥 **Visual Demonstration**
+
+<div align="center">
+  <img src="./public/nextjs-rendering-demo.gif" alt="Demonstration of Next.js Functionalities" />
+</div>
+
 ---
 
 ## 📌 **Project Setup**
@@ -18,7 +24,7 @@ Each page displays:
 To get started, clone this repository and install dependencies:
 
 ```sh
-git clone <repo-url>
+git clone git@github.com:gustavoguarda/nextjs-rendering-demo.git
 cd nextjs-rendering-demo
 npm install
 ```
@@ -111,15 +117,3 @@ Each page displays:
 
 - [Next.js Official Documentation](https://nextjs.org/docs)
 - [Data Fetching in Next.js](https://nextjs.org/docs/app/building-your-application/data-fetching)
-
----
-
-## 🤝 **Contributing**
-
-If you find any issues or have improvements, feel free to open a pull request. 🚀
-
----
-
-## 📜 **License**
-
-This project is licensed under the MIT License.
