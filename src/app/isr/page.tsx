@@ -18,7 +18,7 @@ const ISRPage = async () => {
       <h1>Incremental Static Regeneration (ISR) Page</h1>
 
       <p>
-        <strong>📌 Last Regeneration Timestamp (Static for 60s):</strong>
+        <strong>📌 Last Regeneration Timestamp (Static for 10s):</strong>
         {formatTimestamp(buildTime)}
       </p>
 
