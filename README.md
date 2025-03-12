@@ -89,7 +89,7 @@ export const dynamic = "force-dynamic"; // Forces SSR
 - **Example Use Cases**: E-commerce product pages, pricing tables, blogs with frequent updates.
 
 ```jsx
-export const revalidate = 10; // Regenerates every 60 seconds
+export const revalidate = 10; // Regenerates every 10 seconds
 ```
 
 ---
