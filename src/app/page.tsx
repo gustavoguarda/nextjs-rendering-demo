@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div>
       <h1 style={{ marginBottom: "20px" }}>Home</h1>
-      <p>Choose one of the options:</p>
+      <p>Choose one of the options: Test CI/CD</p>
       <ul style={{ marginTop: "10px" }}>
         <li>
           <Link href="/ssg">Access a build-generated page (SSG)</Link>
